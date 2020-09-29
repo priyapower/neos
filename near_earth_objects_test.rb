@@ -4,8 +4,25 @@ require 'pry'
 require_relative 'near_earth_objects'
 
 class NearEarthObjectsTest < Minitest::Test
+  def setup
+    @neos_from_dynamic_date = NearEarthObjects.new('2020-09-29')
+    @neos_from_dynamic_date_vs_2 = NearEarthObjects.new('2020-01-01')
+  end
+
   def test_a_date_returns_a_list_of_neos
-    results = NearEarthObjects.find_neos_by_date('2019-03-30')
-    assert_equal '(2019 GD4)', results[:astroid_list][0][:name]
+    assert_equal '(2020 SN2)', @neos_from_dynamic_date.neo_data[0][:name]
+  end
+
+  def test_largest_asteroid_returns_one_integer_max_value
+    assert_equal 1949, @neos_from_dynamic_date.largest_asteroid
+  end
+
+  def test_it_can_return_neos_from_date_given
+    assert_equal 12, @neos_from_dynamic_date.neo_count
+    assert_equal 13, @neos_from_dynamic_date_vs_2.neo_count
+  end
+
+  def test_it_can_format_data
+    assert_equal "253 ft", @neos_from_dynamic_date.format_data[0][:diameter]
   end
 end
