@@ -16,7 +16,6 @@
       - Ln 14, 'date' is the passed param which comes from the start.rb which comes from CLI
       - FEELING MOST CONFIDENT: converting NearEarthObjects from a single self. to an instance fo NearEarthObjects that we can call various methods upon
       - regarding the figaro info: perhaps we CAN put this in it's own file, be cautious since this is how our API key is reading? Would this be a module?
-      Test
 
 ### Identify the responsibilities
 1. With your Partner, identify the different responsibilities that exist in each file.
