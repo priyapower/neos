@@ -1,10 +1,6 @@
 require_relative 'near_earth_objects'
 
-puts "________________________________________________________________________________________________________________________________"
-puts "Welcome to NEO. Here you will find information about how many meteors, asteroids, comets pass by the earth every day. \nEnter a date below to get a list of the objects that have passed by the earth on that day."
-puts "Please enter a date in the following format YYYY-MM-DD."
-print ">>"
-
+NearEarthObjects.message("intro")
 date = gets.chomp
 asteroid_details = NearEarthObjects.new(date)
 formatted_asteroid_info = asteroid_details.format_data
@@ -30,10 +26,7 @@ def create_rows(asteroid_data, column_info)
   asteroid_data.each { |asteroid| format_row_data(asteroid, column_info) }
 end
 
-puts "______________________________________________________________________________"
-puts "On #{formated_date}, there were #{asteroid_details.neo_count} objects that almost collided with the earth."
-puts "The largest of these was #{asteroid_details.largest_asteroid} ft. in diameter."
-puts "\nHere is a list of objects with details:"
+NearEarthObjects.message("outro", formated_date, asteroid_details.neo_count, asteroid_details.largest_asteroid)
 puts divider
 puts header
 create_rows(formatted_asteroid_info, column_data)
