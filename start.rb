@@ -6,6 +6,9 @@ asteroid_details = NearEarthObjects.new(date)
 formatted_asteroid_info = asteroid_details.format_data
 formated_date = DateTime.parse(date).strftime("%A %b %d, %Y")
 
+# Secondary Refactor Attempt
+# Would like to take lines 12-30 and lines 33-36 and rewrite as an external formatting class to reduce number of lines in start.rb
+
 column_labels = { name: "Name", diameter: "Diameter", miss_distance: "Missed The Earth By:" }
 column_data = column_labels.each_with_object({}) do |(col, label), hash|
   hash[col] = {
